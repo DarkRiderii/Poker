@@ -45,6 +45,8 @@ class Game {
     this.game = 0;
     this.round=1;
     this.boardCards = [];
+    this.playerID=0;
+    this.playerMove = null;
   }
 
   start(players, small, big, startingMoney) {
@@ -62,6 +64,9 @@ class Game {
       newPlayer.playerMoney = this.startingMoney;
       this.allPlayers.push(newPlayer);
     }
+
+    this.playerID = Math.floor(Math.random()*this.allPlayers.length); // Creates user player
+    console.log(this.playerID);
     this.nextGame() // this will move the small/big blinds, make the ppl pay for them, and add to the starting pot.
   }
 
@@ -182,8 +187,10 @@ function App() {
                 {player.playerHand.map((card, index) => (
                   <span key={index}> {card.name} of {card.suit}{index===0 && ", "}</span>
                  ))}
-                </p>
-
+                </p> 
+                {player.id === game.playerID && <button className="btn btn-primary mx-2">Call</button>}
+                {player.id === game.playerID && <button className="btn btn-primary mx-2">Raise</button>}
+                {player.id === game.playerID && <button className="btn btn-danger mx-2">Fold</button>}
               </div>
               ))}
             </div>
