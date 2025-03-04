@@ -150,6 +150,27 @@ class Player {
   }
 }
 
+function waitPlayer(containerID){
+  console.log("sye");
+  return new Promise((resolve) => {
+    console.log("pye");
+    //DOES NOT RUN
+    document.getElementById(containerID).addEventListener("click", event=>{
+      console.log("bye");
+      if(event.target.tagName==="BUTTON"){
+        console.log("hi");
+        resolve(event.target.id);
+      }
+    }, {once:true});
+  });
+}
+
+async function playerClick(){
+  console.log("cye");
+  let result = await waitPlayer("playerContainer");
+  return result;
+}
+
 class Game {
   constructor() {
     this.players = 0;
@@ -164,7 +185,8 @@ class Game {
     this.boardCards = [];
     this.winner=0;
     this.playerID=0;
-    this.playerMove = null;
+    this.playerMove = "";
+    this.bets = [];
   }
 
   start(players, small, big, startingMoney) {
@@ -253,6 +275,19 @@ class Game {
         this.winner = this.determineRanking();
         console.log("THIS IS THE WINNER: ")
         console.log(this.winner);
+      }
+    }
+    console.log("aye");
+    for(i=0; i<this.allPlayers.length; i++){
+      console.log("nye");
+      if(i!==this.playerID){
+        console.log("gye");
+        this.bets[i] = 1;
+        this.pot+=this.bets[i];
+      }
+      else{
+        console.log("lye");
+        playerClick();
       }
     }
     this.print()

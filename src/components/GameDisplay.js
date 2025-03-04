@@ -74,11 +74,11 @@ const GameDisplay = (props) => {
 
                 {/* Player Actions */}
                 {player.id === props.game.playerID && (
-                  <div className="btn-group mt-2">
-                    <button className="btn btn-primary px-2 me-2">Check</button>
-                    <button className="btn btn-warning px-2 me-2">Call</button>
-                    <button className="btn btn-success px-2 me-2">Raise</button>
-                    <button className="btn btn-danger px-2 me-2">Fold</button>
+                  <div id="playerContainer" className="btn-group mt-2">
+                    <button className="btn btn-primary px-2 me-2" id="checkButton">Check</button>
+                    <button className="btn btn-warning px-2 me-2" id="callButton">Call</button>
+                    <button className="btn btn-success px-2 me-2" id="raiseButton">Raise</button>
+                    <button className="btn btn-danger px-2 me-2" id="foldButton">Fold</button>
                   </div>
                 )}
               </div>
